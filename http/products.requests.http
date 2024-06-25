@@ -1,0 +1,30 @@
+@baseUrl = http://localhost:3000/api
+@page = 1
+@pageLimit = 10
+
+### GET products
+GET {{baseUrl}}/products?page={{page}}&limit={{pageLimit}}
+
+### Create product
+POST {{baseUrl}}/products
+Content-Type: application/json
+
+{
+    "name": "Product 1",
+    "price": 100
+}
+
+### Get product by id
+GET {{baseUrl}}/products/47
+
+### Update product by id
+PATCH {{baseUrl}}/products/48
+Content-Type: application/json
+
+{
+    "name": "Updated product",
+    "price": 1005
+}
+
+### Delete product by id
+DELETE {{baseUrl}}/products/47
