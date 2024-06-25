@@ -14,14 +14,15 @@ import { catchError } from 'rxjs';
 
 import { PRODUCTS_SERVICE } from '../config';
 import { PaginationDto } from '../common';
+import { CreateProductDto } from './dto';
 
 @Controller('products')
 export class ProductsController {
   constructor(@Inject(PRODUCTS_SERVICE) private readonly client: ClientProxy) {}
 
   @Post()
-  create(@Body() createProductDto: any) {
-    return 'This action adds a new product';
+  create(@Body() createProductDto: CreateProductDto) {
+    return this.client.send('createProduct', createProductDto);
   }
 
   @Get()
@@ -46,11 +47,11 @@ export class ProductsController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateProductDto: any) {
-    return `This action updates a #${id} product`;
+    return this.client.send('updateProduct', { id, ...updateProductDto });
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return `This action removes a #${id} product`;
+    return this.client.send('removeProduct', { id });
   }
 }
