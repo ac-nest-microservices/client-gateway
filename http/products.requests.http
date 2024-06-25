@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ### Get product by id
-GET {{baseUrl}}/products/47
+GET {{baseUrl}}/products/49
 
 ### Update product by id
 PATCH {{baseUrl}}/products/48
