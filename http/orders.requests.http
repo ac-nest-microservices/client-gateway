@@ -1,0 +1,18 @@
+@baseUrl = http://localhost:3000/api/orders
+@page = 1
+@pageLimit = 10
+
+### GET products
+GET {{baseUrl}}?page={{page}}&limit={{pageLimit}}
+
+### Create product
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+    "name": "Product 1",
+    "price": 100
+}
+
+### Get product by id
+GET {{baseUrl}}/49
