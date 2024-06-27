@@ -5,6 +5,9 @@
 ### GET orders
 GET {{baseUrl}}?page={{page}}&limit={{pageLimit}}
 
+### GET cancelled orders
+GET {{baseUrl}}?status=CANCELLED
+
 ### Create order
 POST {{baseUrl}}
 Content-Type: application/json
