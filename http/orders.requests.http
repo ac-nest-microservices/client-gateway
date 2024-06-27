@@ -8,6 +8,9 @@ GET {{baseUrl}}?page={{page}}&limit={{pageLimit}}
 ### GET cancelled orders
 GET {{baseUrl}}?status=CANCELLED
 
+### GET cancelled orders by status
+GET {{baseUrl}}/DELIVERED
+
 ### Create order
 POST {{baseUrl}}
 Content-Type: application/json
@@ -18,4 +21,5 @@ Content-Type: application/json
 }
 
 ### Get order by id
-GET {{baseUrl}}/011f4402-08ab-45f5-baac-179b937ec491
+@id = 011f4402-08ab-45f5-baac-179b937ec491
+GET {{baseUrl}}/id/{{id}}
