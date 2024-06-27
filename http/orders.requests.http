@@ -15,4 +15,4 @@ Content-Type: application/json
 }
 
 ### Get order by id
-GET {{baseUrl}}/49
+GET {{baseUrl}}/011f4402-08ab-45f5-baac-179b937ec491
