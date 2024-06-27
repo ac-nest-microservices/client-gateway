@@ -23,3 +23,11 @@ Content-Type: application/json
 ### Get order by id
 @id = 011f4402-08ab-45f5-baac-179b937ec491
 GET {{baseUrl}}/id/{{id}}
+
+### Change order status
+PATCH {{baseUrl}}/{{id}}
+Content-Type: application/json
+
+{
+  "status": "CANCELLED"
+}
