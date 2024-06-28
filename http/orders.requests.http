@@ -16,12 +16,22 @@ POST {{baseUrl}}
 Content-Type: application/json
 
 {
-  "totalItems": 5,
-  "totalAmount": 100
+  "items": [
+    {
+      "productId": 6,
+      "quantity": 2,
+      "price": 100
+    },
+    {
+      "productId": 7,
+      "quantity": 1,
+      "price": 200
+    }
+  ]
 }
 
 ### Get order by id
-@id = 011f4402-08ab-45f5-baac-179b937ec491
+@id = a2b989a3-5a0d-45f5-9ef0-810b3983cfaf
 GET {{baseUrl}}/id/{{id}}
 
 ### Change order status
