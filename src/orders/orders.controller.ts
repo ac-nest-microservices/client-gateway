@@ -21,13 +21,25 @@ export class OrdersController {
   constructor(@Inject(NATS_SERVICE) private readonly client: ClientProxy) {}
 
   @Post()
-  create(@Body() createOrderDto: CreateOrderDto) {
-    return this.client.send('createOrder', createOrderDto);
+  async create(@Body() createOrderDto: CreateOrderDto) {
+    try {
+      return await firstValueFrom(
+        this.client.send('createOrder', createOrderDto),
+      );
+    } catch (error) {
+      throw new RpcException(error);
+    }
   }
 
   @Get()
-  findAll(@Query() orderPaginationDto: OrderPaginationDto) {
-    return this.client.send('findAllOrders', orderPaginationDto);
+  async findAll(@Query() orderPaginationDto: OrderPaginationDto) {
+    try {
+      return await firstValueFrom(
+        this.client.send('findAllOrders', orderPaginationDto),
+      );
+    } catch (error) {
+      throw new RpcException(error);
+    }
   }
 
   @Get(':status')
@@ -36,10 +48,12 @@ export class OrdersController {
     @Query() paginationDto: PaginationDto,
   ) {
     try {
-      return this.client.send('findAllOrders', {
-        ...paginationDto,
-        status: statusDto.status,
-      });
+      return await firstValueFrom(
+        this.client.send('findAllOrders', {
+          ...paginationDto,
+          status: statusDto.status,
+        }),
+      );
     } catch (error) {
       throw new RpcException(error);
     }
@@ -60,7 +74,9 @@ export class OrdersController {
     @Body() { status }: StatusDto,
   ) {
     try {
-      return this.client.send('changeOrderStatus', { id, status });
+      return await firstValueFrom(
+        this.client.send('changeOrderStatus', { id, status }),
+      );
     } catch (error) {
       throw new RpcException(error);
     }
